@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liar's Bar - Card Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Game Code: <span id="game-code"></span></h1>
+        
+        <!-- Waiting Room -->
+        <div id="waiting-room">
+            <div class="status-message" id="required-card">Waiting for game to start...</div>
+            <div class="players-section">
+                <h2>Players in Game:</h2>
+                <div id="players-list"></div>
+            </div>
+            <button id="start-game" class="action-button" style="display: none;">Start Game</button>
+        </div>
+
+        <!-- Game Area (Initially Hidden) -->
+        <div id="game-area" style="display: none;">
+            <div class="game-status">
+                <div id="turn-indicator">Current Turn: <span id="current-player"></span></div>
+                <div id="current-required">Required Card: <span id="required-type"></span></div>
+            </div>
+            
+            <div class="cards-section">
+                <h2>Your Cards</h2>
+                <div id="cards-container"></div>
+            </div>
+            
+            <div class="game-controls">
+                <button id="play-selected" class="action-button" disabled>Play Selected Cards</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const gameCode = "{{ code }}";
+        const playerId = localStorage.getItem('playerId') || crypto.randomUUID();
+        localStorage.setItem('playerId', playerId);
+    </script>
+    <script src="/static/game.js"></script>
+</body>
+</html>

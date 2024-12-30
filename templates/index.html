@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liar's Bar - Home</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Liar's Bar</h1>
+        <div class="menu-buttons">
+            <button onclick="createGame()">Create New Game</button>
+            <button onclick="joinGame()">Join Game</button>
+        </div>
+    </div>
+
+    <script>
+        function createGame() {
+            const gameCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+            window.location.href = `/game/${gameCode}`;
+        }
+
+        function joinGame() {
+            const code = prompt("Enter game code:");
+            if (code) {
+                window.location.href = `/game/${code.toUpperCase()}`;
+            }
+        }
+    </script>
+</body>
+</html>
